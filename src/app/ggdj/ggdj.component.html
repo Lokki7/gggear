@@ -1,0 +1,17 @@
+<a href="" routerLink="/">Назад</a>
+<div>
+  <label>
+    Минимальная сумма доната:
+    <input [(ngModel)]="limit" type="number">
+  </label>
+<br>
+  <label>
+    Ограничение на длину видео (секунд):
+    <input [(ngModel)]="timeLimit" type="number">
+  </label>
+
+  <br>
+  <br>
+
+  <app-youtube [videos]="videos"></app-youtube>
+</div>
