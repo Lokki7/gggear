@@ -1,4 +1,10 @@
 <a href="" routerLink="/">Назад</a>
+
+<br>
+<a (click)="testVideo()">test</a>
+<br>
+<a (click)="skipVideo()">skip</a>
+
 <div>
   <label>
     Минимальная сумма доната:
@@ -13,5 +19,7 @@
   <br>
   <br>
 
-  <app-youtube [videos]="videos"></app-youtube>
+  <app-youtube></app-youtube>
+
+  <app-queue></app-queue>
 </div>

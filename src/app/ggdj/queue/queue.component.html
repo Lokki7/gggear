@@ -1,0 +1,20 @@
+<p>В очереди:</p>
+
+<table border="1">
+  <tr>
+    <th>Юзер</th>
+    <th>Стоимость</th>
+    <th>Заголовок</th>
+    <th>Длительность</th>
+  </tr>
+
+  <tr *ngFor="let track of tracks">
+    <td>{{ track.user }}</td>
+    <td>{{ track.price }}</td>
+    <td><a href="https://www.youtube.com/watch?v={{ track.id }}" target="_blank">{{ track.title }}</a></td>
+    <td>{{ track.duration*1000 | date:'HH:mm:ss':'+0000' }}</td>
+  </tr>
+</table>
+
+<!-- TODO: не пашет, если больше 24 часов :( -->
+Общее время в очереди: {{ totalDuration*1000 | date:'HH:mm:ss':'+0000' }}

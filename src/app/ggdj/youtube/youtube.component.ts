@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {DjQueueService} from '../dj-queue.service';
+import {DjTrack} from '../dj-track';
 
 declare var YT: any;
 
@@ -9,12 +10,10 @@ declare var YT: any;
   styleUrls: ['./youtube.component.css']
 })
 export class YoutubeComponent implements OnInit {
-  @Input() videos: Subject<string>;
-  public queue = [];
   private isPlaying = false;
   private player: any;
 
-  constructor() {
+  constructor(private queueService: DjQueueService) {
     // TODO: Ugly hack :(
     var tag = document.createElement('script');
 
@@ -22,6 +21,17 @@ export class YoutubeComponent implements OnInit {
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+    queueService.events$.subscribe(eventName => this.onQueueEvent(eventName));
+  }
+
+  onQueueEvent(eventName) {
+    if (eventName == 'new_track' && !this.isPlaying) {
+      this.startNext();
+    }
+
+    if (eventName == 'skip') {
+      this.startNext();
+    }
   }
 
   async createPlayer() {
@@ -39,24 +49,25 @@ export class YoutubeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.videos.subscribe(videoId => {
-      this.queue.push(videoId);
-      this.startNext();
-    });
+    // this.videos.subscribe(videoId => {
+    //   this.queue.push(videoId);
+    //   this.startNext();
+    // });
   }
 
   async startNext() {
-    if(!this.player) await this.createPlayer();
-
-    // console.log('start next', this.queue.length);
-
-    if (this.isPlaying || this.queue.length == 0) return false;
-    this.youtubeStart(this.queue.shift());
+    if (!this.player) await this.createPlayer();
+    this.youtubeStart(this.queueService.shift());
   }
 
-  youtubeStart(videoId) {
+  youtubeStart(track: DjTrack) {
     this.isPlaying = true;
-    this.player.loadVideoById(videoId);
+
+    if (track && track.id) {
+      this.player.loadVideoById(track.id);
+    } else {
+      this.player.stopVideo();
+    }
   }
 
   onPlayerStateChange(event) {
