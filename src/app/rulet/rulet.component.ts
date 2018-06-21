@@ -1,4 +1,4 @@
-import {Component, OnInit, Sanitizer} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RuletItem} from './rulet-item';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
@@ -14,7 +14,7 @@ export class RuletComponent implements OnInit {
   public left: SafeStyle;
 
   constructor(private sanitiler: DomSanitizer) {
-    for(let i = 0; i < 40; i++) {
+    for (let i = 0; i < 40; i++) {
       let item = new RuletItem();
       item.title = 'Выключить стрим';
       item.className = classNames[Math.floor(Math.random() * classNames.length)];
