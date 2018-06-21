@@ -37,7 +37,7 @@ export class RuletComponent implements OnInit {
   }
 
   async onPayment({user, message, amount}) {
-    if (amount < 30) return;
+    if (amount < 50) return;
     this.loadData();
   }
 
@@ -51,7 +51,12 @@ export class RuletComponent implements OnInit {
     this.showRulet = true;
 
     setTimeout(() => this.scroll(), 1000);
-    setTimeout(() => this.showRulet = false, 10000);
+    setTimeout(() => this.resetAnimation(), 10000);
+  }
+
+  resetAnimation() {
+    this.showRulet = false;
+    this.left = this.sanitiler.bypassSecurityTrustStyle('-100px');
   }
 
   generateRuletItems(items: RuletItem[]) {
