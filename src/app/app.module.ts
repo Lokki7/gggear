@@ -6,26 +6,46 @@ import {RouterModule, Routes} from '@angular/router';
 import {GgdjModule} from './ggdj/ggdj.module';
 import {MainpageComponent} from './mainpage/mainpage.component';
 import {MainpageModule} from './mainpage/mainpage.module';
-import { RuletComponent } from './rulet/rulet.component';
+import {RuletComponent} from './rulet/rulet.component';
+import {EditorComponent} from './rulet/editor/editor.component';
+import {FormsModule} from '@angular/forms';
+
+import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 
 const appRoutes: Routes = [
   {path: '', component: MainpageComponent, pathMatch: 'full'},
   {path: 'dj/:stream', component: GgdjComponent},
   {path: 'rulet/:stream', component: RuletComponent},
+  {path: 'rulet/:stream/editor', component: EditorComponent},
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RuletComponent
+    RuletComponent,
+    EditorComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     GgdjModule,
     MainpageModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatTableModule,
+    MatInputModule,
+    NoopAnimationsModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+.container {
+  padding: 5%;
+}
+
+table {
+  width: 90%;
+}
+
+.example-full-width {
+  width: 90%;
+}
+
+a {
+  cursor: pointer;
+}

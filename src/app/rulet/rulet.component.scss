@@ -18,11 +18,20 @@
   position: absolute;
   width: 1205px;
   height: 162px;
+
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
 
 @keyframes pontya {
-  from {top: 0; height: 0}
-  to {top: -63px; height: 76px}
+  from { top: 0; height: 0 }
+  to { top: -63px; height: 76px }
 }
 
 .title {
@@ -87,7 +96,6 @@
         background-image: url('/assets/rulet/pontya_roll_butt_r_ut.png');
         text-shadow: 0 0 8px #bd3dff;
       }
-
       &.weird {
         background-image: url('/assets/rulet/pontya_roll_butt_un_ut.png');
         text-shadow: 0 0 8px #3dafff;

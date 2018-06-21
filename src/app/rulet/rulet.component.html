@@ -1,13 +1,9 @@
-<div class="container">
+<div class="container" *ngIf="showRulet">
 
-  <div class="rulet" (click)="scroll()">
-    <div class="title">
+  <div class="rulet" (click)="loadData()">
+    <div class="title"></div>
 
-    </div>
-
-    <div class="background">
-
-    </div>
+    <div class="background"></div>
 
     <div class="outer">
       <div class="inner" [style.left]="left">
@@ -15,11 +11,6 @@
       </div>
     </div>
 
-    <div class="frame">
-
-    </div>
-
-
+    <div class="frame"></div>30
   </div>
-
 </div>

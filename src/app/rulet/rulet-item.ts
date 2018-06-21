@@ -1,5 +1,9 @@
+
+export const itemsClassNames = ['gold', 'rare', 'weird', 'simple'];
+
 export class RuletItem {
-  public title: string;
+  public position: number;
+  public title: string = '';
   public className: string;
 
   constructor() {
