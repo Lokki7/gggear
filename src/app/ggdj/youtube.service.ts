@@ -21,7 +21,7 @@ export class YoutubeService {
     return link.replace(regexp, '$1');
   }
 
-  async getTrackByLink(link: string): DjTrack {
+  async getTrackByLink(link: string): Promise<DjTrack> {
     let videoId = this.getVideoId(link);
     return this.getTrackById(videoId);
   }

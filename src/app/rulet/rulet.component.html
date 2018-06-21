@@ -1,0 +1,25 @@
+<div class="container">
+
+  <div class="rulet" (click)="scroll()">
+    <div class="title">
+
+    </div>
+
+    <div class="background">
+
+    </div>
+
+    <div class="outer">
+      <div class="inner" [style.left]="left">
+        <div class="item {{ item.className }}" *ngFor="let item of items">{{ item.title }}</div>
+      </div>
+    </div>
+
+    <div class="frame">
+
+    </div>
+
+
+  </div>
+
+</div>

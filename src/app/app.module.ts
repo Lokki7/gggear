@@ -6,17 +6,20 @@ import {RouterModule, Routes} from '@angular/router';
 import {GgdjModule} from './ggdj/ggdj.module';
 import {MainpageComponent} from './mainpage/mainpage.component';
 import {MainpageModule} from './mainpage/mainpage.module';
+import { RuletComponent } from './rulet/rulet.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: MainpageComponent, pathMatch: 'full'},
   {path: 'dj/:stream', component: GgdjComponent},
+  {path: 'rulet/:stream', component: RuletComponent},
 ];
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RuletComponent
   ],
   imports: [
     BrowserModule,
