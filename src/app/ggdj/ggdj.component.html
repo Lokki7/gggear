@@ -1,25 +1,35 @@
-<a href="" routerLink="/">Назад</a>
+<div class="container">
 
-<br>
-<a (click)="testVideo()">test</a>
-<br>
-<a (click)="skipVideo()">skip</a>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h2>GG DJ</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
 
-<div>
-  <label>
-    Минимальная сумма доната:
-    <input [(ngModel)]="limit" type="number">
-  </label>
-<br>
-  <label>
-    Ограничение на длину видео (секунд):
-    <input [(ngModel)]="timeLimit" type="number">
-  </label>
+      <div class="wrapper">
 
-  <br>
-  <br>
+        <div class="youtube-player">
+          <app-youtube></app-youtube>
+        </div>
 
-  <app-youtube></app-youtube>
+        <div class="settings">
+          <app-settings></app-settings>
 
-  <app-queue></app-queue>
+          <button mat-button (click)="testVideo()">Тест</button>
+          <button mat-button (click)="skipVideo()">Пропустить текущее видео</button>
+          <br><br>
+
+          <app-queue></app-queue>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <!--<br>-->
+  <!--<a (click)="testVideo()">test</a>-->
+  <!--<br>-->
+  <!--<a (click)="skipVideo()">skip</a>-->
+
+
 </div>

@@ -59,7 +59,6 @@ export class RuletComponent implements OnInit {
     this.showRulet = true;
 
     this.animationClass = 'animation' + (Math.ceil(Math.random()*3));
-
     // (new Audio('/assets/rulet/sound.mp3')).play();
 
     setTimeout(() => this.scroll(), 1000);

@@ -37,8 +37,8 @@ export class YoutubeComponent implements OnInit {
   async createPlayer() {
     return new Promise(resolve => {
       this.player = new YT.Player('player', {
-        height: '360',
-        width: '640',
+        height: '100%',
+        width: '100%',
         videoId: '',
         events: {
           'onReady': event => resolve(),

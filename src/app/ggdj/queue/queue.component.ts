@@ -9,12 +9,18 @@ import {DjTrack} from '../dj-track';
 export class QueueComponent implements OnInit {
   public tracks: DjTrack[] = [];
   public totalDuration = 0;
+  public displayedColumns = ['user', 'price', 'title', 'duration'];
 
   constructor(private queueService: DjQueueService) {
     this.tracks = this.queueService.queue;
 
     this.queueService.events$.subscribe(() => {
-      this.totalDuration = this.queueService.queue.reduce((sum, track) => sum + track.duration, 0);
+      this.tracks = this.queueService.queue.slice();
+      if(this.queueService.currentTrack) {
+        this.tracks.unshift(this.queueService.currentTrack);
+      }
+
+      this.totalDuration = this.tracks.reduce((sum, track) => sum + track.duration, 0);
     });
   }
 

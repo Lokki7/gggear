@@ -19,8 +19,6 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
 
 
-
-
 const appRoutes: Routes = [
   {path: '', component: MainpageComponent, pathMatch: 'full'},
   {path: 'dj/:stream', component: GgdjComponent},
@@ -36,18 +34,18 @@ const appRoutes: Routes = [
     EditorComponent,
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     FormsModule,
     BrowserModule,
     GgdjModule,
     MainpageModule,
-    RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatInputModule,
     NoopAnimationsModule,
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    MatSliderModule
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
