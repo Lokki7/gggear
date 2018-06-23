@@ -1,5 +1,6 @@
 <div class="container">
   <form>
+
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Пароль" type="password" value="" name="password" [(ngModel)]="password">
     </mat-form-field>
@@ -30,6 +31,13 @@
             </mat-select>
           </mat-form-field>
 
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="chance">
+        <th mat-header-cell *matHeaderCellDef> Вероятность</th>
+        <td mat-cell *matCellDef="let element; index as i">
+          <mat-slider thumbLabel class="example-full-width" min="10" max="90" step="1" name="chance-{{ i }}" [(ngModel)]="element.chance"></mat-slider>
         </td>
       </ng-container>
 

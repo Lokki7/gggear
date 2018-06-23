@@ -5,6 +5,7 @@ export class RuletItem {
   public position: number;
   public title: string = '';
   public className: string;
+  public chance: number;
 
   constructor() {
 

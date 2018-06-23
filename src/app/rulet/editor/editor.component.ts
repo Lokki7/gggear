@@ -3,6 +3,7 @@ import {itemsClassNames, RuletItem} from '../rulet-item';
 import {DomSanitizer} from '@angular/platform-browser';
 import {RuletService} from '../rulet.service';
 import {ActivatedRoute} from '@angular/router';
+import 'hammerjs';
 
 
 @Component({
@@ -13,7 +14,7 @@ import {ActivatedRoute} from '@angular/router';
 export class EditorComponent implements OnInit {
   public items: RuletItem[] = [];
   public classNames = itemsClassNames;
-  public displayedColumns = ['title', 'className', 'buttons'];
+  public displayedColumns = ['title', 'className', 'chance', 'buttons'];
 
   public password: string = '';
   private stream: string;

@@ -8,6 +8,13 @@
   height: 100%;
   background: transparent;
   position: fixed;
+
+  opacity: 1;
+  transition: opacity 1s ease;
+
+  &.hidden {
+    opacity: 0;
+  }
 }
 
 .rulet {
@@ -18,15 +25,6 @@
   position: absolute;
   width: 1205px;
   height: 162px;
-
-  animation-name: fadeIn;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0 }
-  to { opacity: 1 }
 }
 
 @keyframes pontya {
@@ -60,6 +58,7 @@
   background: url("/assets/rulet/pontya_roll_back.png") no-repeat;
 }
 
+
 .outer {
   overflow: hidden;
   width: calc(100% - 35px);
@@ -69,10 +68,22 @@
 
   .inner {
     width: 10720px;
-    transition: left 5s cubic-bezier(0.315, 0.170, 0.270, 1.220);
+    transition: left 12s cubic-bezier(0.315, 0.170, 0.270, 1.220);
     position: absolute;
     left: -100px;
     display: table;
+
+    &.animation1 {
+      transition: left 12s cubic-bezier(0, .75, .15, 1.05);
+    }
+
+    &.animation2 {
+      transition: left 12s cubic-bezier(.12, .51, .42, 1.26);
+    }
+
+    &.animation3 {
+      transition: left 12s cubic-bezier(0.315, 0.170, 0.270, 1.220);
+    }
 
     .item {
       width: 268px;

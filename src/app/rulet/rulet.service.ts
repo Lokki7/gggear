@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-const apiUrl = 'http://192.168.1.34:3000/rulet/';
+const apiUrl = 'http://195.9.195.13:3000/rulet/';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RuletService {
 
-  constructor() {}
+export class RuletService {
+  constructor() {
+  }
 
   async getData(streamer: string) {
     let res = await fetch(apiUrl + streamer);
@@ -25,7 +26,7 @@ export class RuletService {
 
     let answer = await res.json();
 
-    if(!answer.result) {
+    if (!answer.result) {
       throw new Error(answer.message);
     }
 

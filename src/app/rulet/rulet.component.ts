@@ -16,6 +16,7 @@ export class RuletComponent implements OnInit {
   public showRulet = false;
   public items: RuletItem[] = [];
   public left: SafeStyle = this.sanitiler.bypassSecurityTrustStyle('-100px');
+  public animationClass = "animation1";
 
   private stream: string;
 
@@ -26,6 +27,13 @@ export class RuletComponent implements OnInit {
               private apiService: GgapiService) {
 
     this.route.params.subscribe(({stream}) => this.connectChat(stream));
+
+    this.route.queryParams
+      .subscribe(params => {
+        if (params.test) {
+          this.loadData();
+        }
+      });
   }
 
   async connectChat(stream) {
@@ -37,7 +45,7 @@ export class RuletComponent implements OnInit {
   }
 
   async onPayment({user, message, amount}) {
-    if (amount < 50) return;
+    if (amount < 500) return;
     this.loadData();
   }
 
@@ -50,26 +58,64 @@ export class RuletComponent implements OnInit {
     this.items = this.generateRuletItems(items);
     this.showRulet = true;
 
+    this.animationClass = 'animation' + (Math.ceil(Math.random()*3));
+
+    // (new Audio('/assets/rulet/sound.mp3')).play();
+
     setTimeout(() => this.scroll(), 1000);
-    setTimeout(() => this.resetAnimation(), 10000);
+    setTimeout(() => this.resetAnimation(), 21000);
   }
 
   resetAnimation() {
     this.showRulet = false;
-    this.left = this.sanitiler.bypassSecurityTrustStyle('-100px');
+    setTimeout(() => {
+      this.left = this.sanitiler.bypassSecurityTrustStyle('-100px');
+    }, 1000);
   }
 
   generateRuletItems(items: RuletItem[]) {
     let ret = [];
 
+    items = this.convertChances(items);
+
     for (let i = 0; i < 40; i++) {
-      let item = items[Math.floor(Math.random() * items.length)];
+      let item = this.getNextItem(items);
       ret.push(item);
     }
 
     return ret;
   }
 
-  ngOnInit() {}
+  convertChances(items: RuletItem[]) {
+    let sum = items.reduce((sum, item) => sum + (item.chance || 1), 0);
+    items.forEach(item => item.chance = (item.chance || 1) / sum);
+
+    return items;//.sort((a, b) => a.chance - b.chance);
+  }
+
+  getNextItem(items: RuletItem[]): RuletItem {
+    let random = Math.random();
+    let sum = 0;
+
+    for (let i = 0; i < items.length; i++) {
+      sum += items[i].chance;
+      if (sum > random) {
+        return items[i];
+      }
+    }
+  }
+
+  // countItems(ret) {
+  //   let result = {};
+  //
+  //   ret.forEach(item => {
+  //     if (!result[item.title]) result[item.title] = 0;
+  //     result[item.title]++;
+  //   });
+  //
+  // }
+
+  ngOnInit() {
+  }
 
 }
