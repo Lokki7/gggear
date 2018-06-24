@@ -1,16 +1,12 @@
-<div class="container" [class.hidden]="!showRulet">
-
-  <div class="rulet" (click)="loadData()">
+<div class="container">
+  <div class="rulet" (click)="loadData()" [class.hidden]="!showRulet">
     <div class="title"></div>
-
     <div class="background"></div>
-
     <div class="outer">
       <div class="inner" [style.left]="left" [ngClass]="animationClass">
         <div class="item {{ item.className }}" *ngFor="let item of items">{{ item.title }}</div>
       </div>
     </div>
-
     <div class="frame"></div>
   </div>
 </div>

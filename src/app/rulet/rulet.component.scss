@@ -9,12 +9,6 @@
   background: transparent;
   position: fixed;
 
-  opacity: 1;
-  transition: opacity 1s ease;
-
-  &.hidden {
-    opacity: 0;
-  }
 }
 
 .rulet {
@@ -25,6 +19,13 @@
   position: absolute;
   width: 1205px;
   height: 162px;
+
+  opacity: 1;
+  transition: opacity 1s ease;
+
+  &.hidden {
+    opacity: 0;
+  }
 }
 
 @keyframes pontya {

@@ -20,6 +20,8 @@ export class RuletComponent implements OnInit {
 
   private stream: string;
 
+  private sum = 0;
+
   constructor(private route: ActivatedRoute,
               private sanitiler: DomSanitizer,
               private ruletService: RuletService,
@@ -45,8 +47,14 @@ export class RuletComponent implements OnInit {
   }
 
   async onPayment({user, message, amount}) {
-    if (amount < 500) return;
-    this.loadData();
+    // if (amount < 500) return;
+    this.sum += amount;
+
+    if(this.sum >= 500) {
+      this.loadData();
+      this.sum = 0;
+    }
+
   }
 
   scroll() {
@@ -74,7 +82,6 @@ export class RuletComponent implements OnInit {
 
   generateRuletItems(items: RuletItem[]) {
     let ret = [];
-
     items = this.convertChances(items);
 
     for (let i = 0; i < 40; i++) {
