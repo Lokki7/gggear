@@ -6,7 +6,6 @@ import {RuletService} from './rulet.service';
 import {GgchatService} from '../ggchat/ggchat.service';
 import {GgapiService} from '../ggapi/ggapi.service';
 
-
 @Component({
   selector: 'app-rulet',
   templateUrl: './rulet.component.html',
@@ -14,9 +13,11 @@ import {GgapiService} from '../ggapi/ggapi.service';
 })
 export class RuletComponent implements OnInit {
   public showRulet = false;
+  public showCounter = false;
   public items: RuletItem[] = [];
   public left: SafeStyle = this.sanitiler.bypassSecurityTrustStyle('-100px');
   public animationClass = "animation1";
+  public ruletPrice = 30;
 
   private stream: string;
 
@@ -36,6 +37,8 @@ export class RuletComponent implements OnInit {
           this.loadData();
         }
       });
+
+    this.sum = this.ruletService.loadSum();
   }
 
   async connectChat(stream) {
@@ -50,11 +53,15 @@ export class RuletComponent implements OnInit {
     // if (amount < 500) return;
     this.sum += amount;
 
-    if(this.sum >= 500) {
+    if(this.sum >= this.ruletPrice) {
       this.loadData();
-      this.sum = 0;
+      this.sum -= this.ruletPrice;
+    } else {
+      this.showCounter = true;
+      setTimeout(() => this.showCounter = false, 5000);
     }
 
+    this.ruletService.saveSum(this.sum);
   }
 
   scroll() {

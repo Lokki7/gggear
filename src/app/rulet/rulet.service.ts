@@ -33,4 +33,11 @@ export class RuletService {
     return true
   }
 
+  saveSum(value) {
+    localStorage.setItem('gggear-rulet-sum', value);
+  }
+
+  loadSum() {
+    return +localStorage.getItem('gggear-rulet-sum');
+  }
 }

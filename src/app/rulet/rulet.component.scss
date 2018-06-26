@@ -28,6 +28,23 @@
   }
 }
 
+.counter {
+  font-size: 32px;
+  font-family: 'Bangkok';
+  color: #fff;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  opacity: 1;
+  transition: opacity 1s ease;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
 @keyframes pontya {
   from { top: 0; height: 0 }
   to { top: -63px; height: 76px }

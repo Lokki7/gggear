@@ -9,4 +9,8 @@
     </div>
     <div class="frame"></div>
   </div>
+
+  <div class="counter" [class.hidden]="!showCounter">
+    Ну рулетку набрано {{ sum }} из {{ ruletPrice }}р
+  </div>
 </div>
