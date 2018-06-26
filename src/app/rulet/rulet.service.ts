@@ -30,7 +30,7 @@ export class RuletService {
       throw new Error(answer.message);
     }
 
-    return true
+    return true;
   }
 
   saveSum(value) {

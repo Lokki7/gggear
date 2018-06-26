@@ -17,11 +17,10 @@ export class RuletComponent implements OnInit {
   public items: RuletItem[] = [];
   public left: SafeStyle = this.sanitiler.bypassSecurityTrustStyle('-100px');
   public animationClass = "animation1";
-  public ruletPrice = 30;
+  public ruletPrice = 500;
+  public sum = 0;
 
   private stream: string;
-
-  private sum = 0;
 
   constructor(private route: ActivatedRoute,
               private sanitiler: DomSanitizer,
