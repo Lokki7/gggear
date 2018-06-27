@@ -18,7 +18,6 @@ export class SettingsComponent implements OnInit, OnChanges, DoCheck {
     this.settingsService.save();
   }
 
-
   ngOnInit() {
   }
 }

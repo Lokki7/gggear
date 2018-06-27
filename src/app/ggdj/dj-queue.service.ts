@@ -14,6 +14,10 @@ export class DjQueueService {
 
   }
 
+  sort() {
+    this.queue = this.queue.sort((a, b) => b.price - a.price);
+  }
+
   shift(): DjTrack {
     this.currentTrack = this.queue.shift();
     this.events$.next('next_track');
@@ -22,7 +26,8 @@ export class DjQueueService {
 
   addTrack(track: DjTrack) {
     this.queue.push(track);
-    console.log(this.queue);
+    // console.log(this.queue);
+    this.sort();
     this.events$.next('new_track');
   }
 
