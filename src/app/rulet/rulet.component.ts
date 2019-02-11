@@ -14,6 +14,8 @@ import {GgapiService} from '../ggapi/ggapi.service';
 export class RuletComponent implements OnInit {
   public showRulet = false;
   public showCounter = false;
+  public showText = '';
+
   public items: RuletItem[] = [];
   public left: SafeStyle = this.sanitiler.bypassSecurityTrustStyle('-100px');
   public animationClass = "animation1";
@@ -50,14 +52,22 @@ export class RuletComponent implements OnInit {
 
   async onPayment({user, message, amount}) {
     // if (amount < 500) return;
-    this.sum += amount;
+
+    if(user == 'lokki7' && message.indexOf('!say')===0) {
+      this.showText = message.substring(5);
+    }
+
+    this.sum += Math.round(amount);
 
     if(this.sum >= this.ruletPrice) {
       this.loadData();
       this.sum -= this.ruletPrice;
     } else {
       this.showCounter = true;
-      setTimeout(() => this.showCounter = false, 5000);
+      setTimeout(() => {
+        this.showText = '';
+        this.showCounter = false;
+      }, 5000);
     }
 
     this.ruletService.saveSum(this.sum);

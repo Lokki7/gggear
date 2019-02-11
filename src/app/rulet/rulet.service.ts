@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-const apiUrl = 'http://195.9.195.13:3000/rulet/';
+const apiUrl = 'http://195.9.195.16:3000/rulet/';
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +34,10 @@ export class RuletService {
   }
 
   saveSum(value) {
-    localStorage.setItem('gggear-rulet-sum', value);
+    localStorage.setItem('gggear-rulet-sum', Math.round(value).toString());
   }
 
   loadSum() {
-    return +localStorage.getItem('gggear-rulet-sum');
+    return Math.round(+localStorage.getItem('gggear-rulet-sum'));
   }
 }

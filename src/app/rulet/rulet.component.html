@@ -11,6 +11,7 @@
   </div>
 
   <div class="counter" [class.hidden]="!showCounter">
-    Ну рулетку набрано {{ sum }} из {{ ruletPrice }}р
+    <span *ngIf="!showText">Ну рулетку набрано {{ sum }} из {{ ruletPrice }}р</span>
+    <span *ngIf="showText">{{ showText }}</span>
   </div>
 </div>
