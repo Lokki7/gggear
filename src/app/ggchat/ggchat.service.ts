@@ -38,7 +38,8 @@ export class GgchatService {
     this.send('join', {'channel_id': this.stream});
   }
 
-  onPayment({amount, message, userName}) {
+  onPayment({amount, message, userName, total}) {
+    if(total) return false;
     this.$payment.next({user: userName, message, amount: +amount});
   }
 
