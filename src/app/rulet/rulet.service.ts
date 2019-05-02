@@ -34,10 +34,10 @@ export class RuletService {
   }
 
   saveSum(value) {
-    localStorage.setItem('gggear-rulet-sum2', Math.round(value).toString());
+    localStorage.setItem('gggear-rulet-sum4', Math.round(value).toString());
   }
 
   loadSum() {
-    return Math.round(+localStorage.getItem('gggear-rulet-sum2'));
+    return Math.round(+localStorage.getItem('gggear-rulet-sum4'));
   }
 }

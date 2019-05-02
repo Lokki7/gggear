@@ -53,15 +53,15 @@ export class RuletComponent implements OnInit {
   async onPayment({user, message, amount}) {
     // if (amount < 500) return;
 
-    if(user == 'lokki7' && message.indexOf('!say')===0) {
-      this.showText = message.substring(5);
-    }
+    // if (user == 'lokki7' && message.indexOf('!say') === 0) {
+    //   this.showText = message.substring(5);
+    // }
 
     this.sum += Math.round(amount);
 
     if(this.sum >= this.ruletPrice) {
       this.loadData();
-      this.sum -= this.ruletPrice;
+      this.sum = 0; // this.ruletPrice;
     } else {
       this.showCounter = true;
       setTimeout(() => {
@@ -83,7 +83,7 @@ export class RuletComponent implements OnInit {
     this.showRulet = true;
 
     this.animationClass = 'animation' + (Math.ceil(Math.random()*3));
-    // (new Audio('/assets/rulet/sound.mp3')).play();
+    (new Audio('/assets/rulet/rulet.mp3')).play();
 
     setTimeout(() => this.scroll(), 1000);
     setTimeout(() => this.resetAnimation(), 21000);

@@ -25,27 +25,7 @@ export class GgdjComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  async testVideo() {
-    let track = await this.youtubeService.getTrackById('RDfjXj5EGqI');
-    track.price = 30;
-    track.user = 'Анон';
-
-    this.djQueue.addTrack(track);
-
-    let track2 = await this.youtubeService.getTrackById('RDfjXj5EGqI');
-    track2.price = 50;
-    track2.user = 'Анон';
-
-    this.djQueue.addTrack(track2);
-
-    let track3 = await this.youtubeService.getTrackById('RDfjXj5EGqI');
-    track3.price = 15;
-    track3.user = 'Анон';
-
-    this.djQueue.addTrack(track3);
-  }
-
+  
   skipVideo() {
     this.djQueue.skip();
   }

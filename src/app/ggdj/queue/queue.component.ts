@@ -16,7 +16,7 @@ export class QueueComponent implements OnInit {
 
     this.queueService.events$.subscribe(() => {
       this.tracks = this.queueService.queue.slice();
-      if(this.queueService.currentTrack) {
+      if (this.queueService.currentTrack) {
         this.tracks.unshift(this.queueService.currentTrack);
       }
 

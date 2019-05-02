@@ -61,9 +61,8 @@ export class YoutubeComponent implements OnInit {
   }
 
   youtubeStart(track: DjTrack) {
-    this.isPlaying = true;
-
     if (track && track.id) {
+      this.isPlaying = true;
       this.player.loadVideoById(track.id);
     } else {
       this.player.stopVideo();

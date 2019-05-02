@@ -17,12 +17,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
+import { LolComponent } from './lol/lol.component';
 
 const appRoutes: Routes = [
   {path: '', component: MainpageComponent, pathMatch: 'full'},
   {path: 'dj/:stream', component: GgdjComponent},
   {path: 'rulet/:stream', component: RuletComponent},
   {path: 'rulet/:stream/editor', component: EditorComponent},
+  {path: '**', component: LolComponent},
 ];
 
 
@@ -31,6 +33,7 @@ const appRoutes: Routes = [
     AppComponent,
     RuletComponent,
     EditorComponent,
+    LolComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
